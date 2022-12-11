@@ -30,7 +30,7 @@ public class JUEGOBATALLANAVAL {
             tablero_jugador1= new char[numtablero] [numtablero];
             tablero_jugador2= new char[numtablero] [numtablero];
             tablero_nadajugador1= new char[numtablero] [numtablero];
-            tablero_nadajugador2= new char[numtablero] [numtablero];
+            tablero_nadajugador2= new char[numtablero] [numtablero];         
             //SE MUESTRA COMO QUEDA EL TABLERO CON NUMEROS
             System.out.println("==============EL TABLERO ES EL SIGUIENTE==============");
             //SE INICIA LA CREACION DE CADA TABLERO, 1 y 2 PARA LOS JUGADORES QUE GUARDEN LOS BARCOS y 3 y 4 PARA QUE SE MUESTRE EN OCULTO EL TABLERO
@@ -39,6 +39,7 @@ public class JUEGOBATALLANAVAL {
             Creartablero3(tablero_nadajugador1);
             Creartablero4(tablero_nadajugador2);
             imprimirTablero3(tablero_jugador1);
+            System.out.println(" ");
             // SE LE PIDEN LOS DATOS AL JUGADOR 1
             System.out.println("=============JUGADOR 1=============");
             System.out.print("Ingresa el nombre del primer jugador:");
@@ -53,6 +54,15 @@ public class JUEGOBATALLANAVAL {
                 System.out.print("Ingresa cuantos barcos tendras: ");
                 numBarco1=leer.nextInt();
                 if (numBarco1>0 && numBarco1<=4){
+                    if (numBarco1==1){
+                        tbarcos1=1;
+                    }else if (numBarco1==2){
+                        tbarcos1=3;
+                    }else if (numBarco1==3){
+                        tbarcos1=6;
+                    }else if (numBarco1==4){
+                        tbarcos1=10;
+                    }
                     //SE VALIDA SI LA PERSONA TECLEA EL NUMERO DE BARCOS CORRECTO
                     barcos.add(numBarco1);
                     System.out.println( );
@@ -82,6 +92,15 @@ public class JUEGOBATALLANAVAL {
                 System.out.print("Ingresa cuantos barcos tendras: ");
                 numBarco2=leer.nextInt();
                 if (numBarco2>0 && numBarco2<=4){
+                    if (numBarco2==1){
+                        tbarcos2=1;
+                    }else if (numBarco2==2){
+                        tbarcos2=3;
+                    }else if (numBarco2==3){
+                        tbarcos2=6;
+                    }else if (numBarco2==4){
+                        tbarcos2=10;
+                    }
                     barcos.add(numBarco2);
                     System.out.println( );
                     si2=1;
@@ -105,7 +124,7 @@ public class JUEGOBATALLANAVAL {
     public static void Creartablero(char [][]tablero_jugador1){
         for (int a=0; a<tablero_jugador1.length; a++){
             for (int j=0; j<tablero_jugador1.length; j++){
-                tablero_jugador1[a][j]='O';
+                tablero_jugador1[a][j]='o';
                 //LLENA LOS ESPACIOS DE O
             }
         }
@@ -114,7 +133,7 @@ public class JUEGOBATALLANAVAL {
     public static void Creartablero2(char [][]tablero_jugador2){
         for (int a=0; a<tablero_jugador2.length; a++){
             for (int j=0; j<tablero_jugador2.length; j++){
-                tablero_jugador2[a][j]='O';
+                tablero_jugador2[a][j]='o';
                 //LLENA LOS ESPACIOS DE O
             }
         }
@@ -123,7 +142,7 @@ public class JUEGOBATALLANAVAL {
     public static void Creartablero3(char [][]tablero_nadajugador1){
         for (int a=0; a<tablero_nadajugador1.length; a++){
             for (int j=0; j<tablero_nadajugador1.length; j++){
-                tablero_nadajugador1[a][j]='O';
+                tablero_nadajugador1[a][j]='o';
                 //LLENA LOS ESPACIOS DE O
             }
         }
@@ -132,7 +151,7 @@ public class JUEGOBATALLANAVAL {
     public static void Creartablero4(char [][]tablero_nadajugador2){
         for (int a=0; a<tablero_nadajugador2.length; a++){
             for (int j=0; j<tablero_nadajugador2.length; j++){
-                tablero_nadajugador2[a][j]='O';
+                tablero_nadajugador2[a][j]='0';
                 //LLENA LOS ESPACIOS DE O
             }
         }
@@ -314,20 +333,26 @@ public class JUEGOBATALLANAVAL {
                 System.out.println("=================PON TU PRIMER BARCO==================");
                 int otra=0;
                 while (otra==0){
-                    System.out.println("Ingresa la columna donde quieres poner tu barco");
+                    System.out.print("Ingresa la columna donde quieres poner tu barco");
                     int x= leer.nextInt();
+                    System.out.println(" ");
                     if (x>0 && x<=tablero_jugador1[0].length ){
                         // SE COMPRUEBA LA COLUMNA
                         int comprobarfila=0;
                         while (comprobarfila==0){
-                            System.out.println("Ingresa la fila donde quieres poner tu barco");
+                            System.out.print("Ingresa la fila donde quieres poner tu barco");
                             int y=leer.nextInt();
+                            System.out.println(" ");
                             if (y>0 && y<=tablero_jugador1[0].length ){
                                 // SE COMPRUEBA LA FILA
                                 y=y-1;
                                 x=x-1;
+                                System.out.println("===================================");
+                                System.out.println(" ");
+                                System.out.println("Asi queda tu tablero con los barcos");
                                 tablero_jugador1[y][x]='U'; //SE PONE UNA LETRA CONFORME AL NUMERO DEL BARCO EN ESTE CASO ES PARA EL BARCO 1 QUE ES U
                                 imprimirTablero(tablero_jugador1); // SE IMPRIME TABLERO
+                                System.out.println(" ");
                                 numBarco1=numBarco1-1;
                                 otra=1;
                                 comprobarfila=1;
@@ -362,11 +387,15 @@ public class JUEGOBATALLANAVAL {
                                     // SE COMPRUEBA LA FILA
                                     y=y-1;
                                     x=x-1;
+                                    System.out.println("===================================");
+                                    System.out.println(" ");
+                                    System.out.println("Asi queda tu tablero con los barcos");
                                     tablero_jugador1[y][x]='D'; //SE PONE UNA LETRA CONFORME AL NUMERO DEL BARCO EN ESTE CASO ES PARA EL BARCO 2 QUE ES D
                                     barcodos--;
                                     otra=1;
                                     comprobarfila=1;
                                     imprimirTablero(tablero_jugador1); // SE IMPRIME TABLERO
+                                    System.out.println(" ");
                                 }else{
                                     System.out.println("NO ES UNA FILA CORRECTA");
                                 }
@@ -401,11 +430,15 @@ public class JUEGOBATALLANAVAL {
                                     // SE COMPRUEBA LA FILA
                                     y=y-1;
                                     x=x-1;
+                                    System.out.println("===================================");
+                                    System.out.println(" ");
+                                    System.out.println("Asi queda tu tablero con los barcos");
                                     tablero_jugador1[y][x]='T'; //SE PONE UNA LETRA CONFORME AL NUMERO DEL BARCO EN ESTE CASO ES PARA EL BARCO 3 QUE ES T
                                     barcotres--;
                                     otra=1;
                                     comprobarfila=1;
                                     imprimirTablero(tablero_jugador1); // SE IMPRIME TABLERO
+                                    System.out.println(" ");
                                 }else{
                                     System.out.println("NO ES UNA FILA CORRECTA");
                                 }
@@ -440,11 +473,15 @@ public class JUEGOBATALLANAVAL {
                                     // SE COMPRUEBA LA FILA
                                     y=y-1;
                                     x=x-1;
+                                    System.out.println("===================================");
+                                    System.out.println(" ");
+                                    System.out.println("Asi queda tu tablero con los barcos");
                                     tablero_jugador1[y][x]='C'; //SE PONE UNA LETRA CONFORME AL NUMERO DEL BARCO EN ESTE CASO ES PARA EL BARCO 4 QUE ES C
                                     barcocuatro--;
                                     otra=1;
                                     comprobarfila=1;
                                     imprimirTablero(tablero_jugador1); // SE IMPRIME TABLERO
+                                    System.out.println(" ");
                                 }else{ 
                                     System.out.println("NO ES UNA FILA CORRECTA");
                                 }
@@ -488,8 +525,12 @@ public class JUEGOBATALLANAVAL {
                             if (y>0 && y<=tablero_jugador2[0].length ){
                                 y=y-1;
                                 x=x-1;
+                                System.out.println("===================================");
+                                System.out.println(" ");
+                                System.out.println("Asi queda tu tablero con los barcos");
                                 tablero_jugador2[y][x]='U'; //SE PONE UNA LETRA CONFORME AL NUMERO DEL BARCO EN ESTE CASO ES PARA EL BARCO 1 QUE ES U
                                 imprimirTablero(tablero_jugador2); // SE IMPRIME TABLERO
+                                System.out.println(" ");
                                 numBarco2=numBarco2-1;
                                 otra=1;
                                 comprobarfila=1;
@@ -523,12 +564,16 @@ public class JUEGOBATALLANAVAL {
                                 if (y>0 && y<=tablero_jugador2[0].length ){
                                 y=y-1;
                                 x=x-1;
+                                System.out.println("===================================");
+                                System.out.println(" ");
+                                System.out.println("Asi queda tu tablero con los barcos");
                                 tablero_jugador2[y][x]='D'; //SE PONE UNA LETRA CONFORME AL NUMERO DEL BARCO EN ESTE CASO ES PARA EL BARCO 2 QUE ES D
                                 barcodos--;
                                 otra=1; 
                                 comprobarfila=1;
                                 System.out.println("=========================================");
                                 imprimirTablero(tablero_jugador2); // SE IMPRIME TABLERO
+                                System.out.println(" ");
                                 }else{
                                     System.out.println("NO ES UNA FILA CORRECTA");
                                 }
@@ -561,12 +606,16 @@ public class JUEGOBATALLANAVAL {
                                 if (y>0 && y<=tablero_jugador2[0].length ){
                                 y=y-1;
                                 x=x-1;
+                                System.out.println("===================================");
+                                System.out.println(" ");
+                                System.out.println("Asi queda tu tablero con los barcos");
                                 tablero_jugador2[y][x]='T'; //SE PONE UNA LETRA CONFORME AL NUMERO DEL BARCO EN ESTE CASO ES PARA EL BARCO 3 QUE ES T
                                 barcotres--;
                                 otra=1;
                                 comprobarfila=1;
                                 System.out.println("=========================================");
                                 imprimirTablero(tablero_jugador2); // SE IMPRIME TABLERO
+                                System.out.println(" ");
                                 }else{
                                     System.out.println("NO ES UNA FILA CORRECTA");
                                 }
@@ -599,12 +648,16 @@ public class JUEGOBATALLANAVAL {
                                 if (y>0 && y<=tablero_jugador2[0].length ){
                                 y=y-1;
                                 x=x-1;
+                                System.out.println("===================================");
+                                System.out.println(" ");
+                                System.out.println("Asi queda tu tablero con los barcos");
                                 tablero_jugador2[y][x]='C'; //SE PONE UNA LETRA CONFORME AL NUMERO DEL BARCO EN ESTE CASO ES PARA EL BARCO 4 QUE ES C
                                 barcocuatro--;
                                 otra=1;
                                 comprobarfila=1;
                                 System.out.println("=========================================");
                                 imprimirTablero(tablero_jugador2); // SE IMPRIME TABLERO
+                                System.out.println(" ");
                                 }else{
                                     System.out.println("NO ES UNA FILA CORRECTA");
                                 }
@@ -619,7 +672,6 @@ public class JUEGOBATALLANAVAL {
                 
             }
         }
-        barcos=tbarcos2;
     }
 
     public static void Rondas(char [][] tablero_jugador1, char [][] tablero_jugador2, Scanner leer, Scanner leer1, ArrayList<String> nombres, int puntuacion_jugador1, char [][] tablero_nadajugador1, char [][] tablero_sinmodifjugador2, int puntuacion_jugador2, int ganador, int tbarcos1, int tbarcos2, int pasaono, int pasaono2, int acaba, ArrayList<Integer> barcosenjuego, int barcos, int barcoss){
@@ -642,18 +694,20 @@ public class JUEGOBATALLANAVAL {
                 System.out.println(nombres.get(0));
                 System.out.print("Puntuacion: ");
                 System.out.println(puntuacion_jugador1);
+                System.out.println("Puntos de barcos que tienes que encontrar: "+tbarcos2);
                 System.out.println("=======================================");
                 System.out.println("EL TABLERO DEL ENEMIGO DEL JUGADOR 2 ");
                 //MUESTRA EL TABLERO DEL ENEMIGO CON TIROS YA HECHOS
                 imprimirTablero4(tablero_sinmodifjugador2);
+                System.out.println(" ");
                 System.out.println("=======================================");
                 System.out.println("ESTE ES TU TABLERO JUGADOR 1: ");
                 //MUESTRA NUESTRO TABLERO DONDE YA FUE ATACADO UN BARCO O CUANTOS QUEDAN
                 imprimirTablero(tablero_jugador1);
-                System.out.println("=======================================");
                 int columnasi=0;
                 while (columnasi==0){
-                    //CADA WHILE COMPRUEBA SI SE INTRODUCEN BIEN LAS COORDENADAS
+                //CADA WHILE COMPRUEBA SI SE INTRODUCEN BIEN LAS COORDENADAS
+                System.out.println("=======================================");
                 System.out.println("Pon columna para atacar");
                 int x= leer.nextInt();
                 if (x>0 && x<=tablero_jugador2[0].length ){
@@ -669,11 +723,11 @@ public class JUEGOBATALLANAVAL {
                                 System.out.println("=========================================");
                                 tablero_jugador2[y][x]='X';
                                 tablero_sinmodifjugador2[y][x]='X';
-                                tbarcos2=tbarcos2+1;
+                                tbarcos2=tbarcos2-1;
+                                System.out.println("Quedan por encontrar: "+tbarcos2+ " puntos de barcos en el tablero del jugador 1");
                                 System.out.println(tbarcos2);
                                 puntuacion_jugador1+=200;
                                 imprimirTablero4(tablero_sinmodifjugador2);
-                                System.out.println("=======================================");
                                 System.out.println("============VUELVE A TIRAR================");
                                 //CADA QUE TERMINA UNA RONDA SE PUEDE VOLVER A TIRAR
                                 comprobarfila=1; 
@@ -681,21 +735,37 @@ public class JUEGOBATALLANAVAL {
                                 ronda1=0;
                                 ganador=0;
                                 perdedor=1;
+                                if(tbarcos2==0){ //COMPRUEBA QUE EL JUEGO AUN TENGA PUTNOS DE BARCOS
+                                    acaba=1;
+                                    System.out.println("Ya no hay barcos en el tablero del jugador 2 ...");
+                                }
+                            }else if(tablero_jugador2[y][x]=='X'){
+                                System.out.println("LE DISTE A UNA MISMA POSICION");
+                                System.out.println("YA ATACASTE ANTES");
+                                tablero_jugador2[y][x]='X';
+                                tablero_sinmodifjugador2[y][x]='X';
+                                imprimirTablero4(tablero_sinmodifjugador2);
+                                comprobarfila=1;
+                                columnasi=1;
+                                ronda2=0;
+                                rondas=0;
+                                if(tbarcos2==0){ //COMPRUEBA QUE EL JUEGO AUN TENGA PUTNOS DE BARCOS
+                                    acaba=1;
+                                    System.out.println("Ya no hay barcos en el tablero del jugador 2 ...");
+                                }
                             }else{//SI NO DA EL TIRO SE PASA AL JUGADOR 2
                                 System.out.println("===================================");
                                 System.out.println("NO LE DISTE A NINGUN BARCO");
                                 tablero_jugador2[y][x]='X';
                                 tablero_sinmodifjugador2[y][x]='X';
                                 imprimirTablero4(tablero_sinmodifjugador2);
-                                tbarcos2=tbarcos2-1;
                                 comprobarfila=1;
                                 columnasi=1;
                                 ronda2=0;
                                 rondas=0;
-                                tbarcos2=tbarcos2-1;
-                                if(tbarcos2<-4){ //SE TIENEN 4 OPORTUNIDADES
+                                if(tbarcos2==0){ //COMPRUEBA QUE EL JUEGO AUN TENGA PUTNOS DE BARCOS
                                     acaba=1;
-                                    System.out.println("INTENTOS ACABO ...");
+                                    System.out.println("Ya no hay barcos en el tablero del jugador 2 ...");
                                 }
                             }
                         }else{
@@ -718,6 +788,7 @@ public class JUEGOBATALLANAVAL {
                 System.out.println(nombres.get(1));
                 System.out.print("Puntuacion: ");
                 System.out.println(puntuacion_jugador2);
+                System.out.println("Puntos de barcos que tienes que encontrar: "+tbarcos1);
                 System.out.println("=======================================");
                 System.out.println(" EL TABLERO DEL ENEMIGO DEL JUGADOR 1");
                 //MUESTRA EL TABLERO DEL ENEMIGO CON TIROS YA HECHOS
@@ -726,10 +797,10 @@ public class JUEGOBATALLANAVAL {
                 System.out.println("ESTE ES TU TABLERO JUGADOR 2: ");
                 //MUESTRA NUESTRO TABLERO DONDE YA FUE ATACADO UN BARCO O CUANTOS QUEDAN
                 imprimirTablero2(tablero_jugador2);
-                System.out.println("=======================================");
                 int columnasi=0;
                 //CADA WHILE COMPRUEBA SI SE INTRODUCEN BIEN LAS COORDENADAS
                     while (columnasi==0){
+                        System.out.println("=======================================");
                         System.out.println("INGRESA TUS COORDENADAS X y Y");
                         System.out.println("Pon columna para atacar");
                         int x= leer.nextInt();
@@ -742,15 +813,16 @@ public class JUEGOBATALLANAVAL {
                                     y=y-1;
                                     x=x-1;
                                     if (tablero_jugador1[y][x]=='U'| tablero_jugador1[y][x]=='D' | tablero_jugador1[y][x]=='T' | tablero_jugador1[y][x]=='C'){
+                                        System.out.println("=========================================");
                                         System.out.println(" LE DISTE A UN BARCO GANASTE 200 PUNTOS");
                                         System.out.println("=========================================");
                                         System.out.println("PUEDES VOLVER A TIRAR");
                                         tablero_jugador1[y][x]='X';
                                         tablero_nadajugador1[y][x]='X';
-                                        tbarcos1=tbarcos1+1;
+                                        tbarcos1=tbarcos1-1;
+                                        System.out.println("Quedan por encontrar: "+tbarcos1+ " puntos de barcos en el tablero del jugador 1");
                                         puntuacion_jugador2+= 200;
                                         imprimirTablero3(tablero_nadajugador1);
-                                        System.out.println("=======================================");
                                         System.out.println("============VUELVE A TIRAR================");
                                         //CADA QUE TERMINA UNA RONDA SE PUEDE VOLVER A TIRAR
                                         comprobarfila=1;
@@ -758,20 +830,36 @@ public class JUEGOBATALLANAVAL {
                                         ronda2=0;
                                         ganador=1;
                                         perdedor=0;
-                                        
+                                        if(tbarcos1==0){ //COMPRUEBA QUE EL JUEGO AUN TENGA PUTNOS DE BARCOS
+                                            acaba=1;
+                                            System.out.println("Ya no hay barcos en el tablero del jugador 1 ...");
+                                        }
+                                    }else if(tablero_jugador1[y][x]=='X'){
+                                        System.out.println("LE DISTE A UNA MISMA POSICION");
+                                        System.out.println("YA ATACASTE ANTES");
+                                        tablero_jugador1[y][x]='X';
+                                        tablero_sinmodifjugador2[y][x]='X';
+                                        imprimirTablero4(tablero_sinmodifjugador2);
+                                        comprobarfila=1;
+                                        columnasi=1;
+                                        ronda2=0;
+                                        rondas=0;
+                                        if(tbarcos1==0){ //COMPRUEBA QUE EL JUEGO AUN TENGA PUTNOS DE BARCOS
+                                            acaba=1;
+                                            System.out.println("Ya no hay barcos en el tablero del jugador 1 ...");
+                                        }
                                     }else{
                                         System.out.println("NO LE DISTE A NINGUN BARCO");//SI NO DA EL TIRO SE PASA AL JUGADOR 1
                                         tablero_jugador1[y][x]='X';
                                         tablero_nadajugador1[y][x]='X';
                                         imprimirTablero3(tablero_nadajugador1);
                                         comprobarfila=1;
-                                        tbarcos1=tbarcos1-1;
                                         columnasi=1;
                                         rondas=0;
                                         ronda1=0;
-                                        if(tbarcos1<-4){ //SE TIENEN 4 OPORTUNIDADES
+                                        if(tbarcos1==0){ //COMPRUEBA QUE EL JUEGO AUN TENGA PUTNOS DE BARCOS
                                             acaba=1;
-                                            System.out.println("INTENTOS ACABO ...");
+                                            System.out.println("Ya no hay barcos en el tablero del jugador 1 ...");
                                         }
                                     }
                                 }else{
@@ -781,7 +869,7 @@ public class JUEGOBATALLANAVAL {
                         }else{
                             System.out.println("NO ES UNA COLUMNA CORRECTA");
                         }
-                }
+                    }
             }
         }
         }
@@ -795,35 +883,16 @@ public class JUEGOBATALLANAVAL {
         System.out.println(nombres.get(ganador));
         System.out.print("Puntuacion: ");
         System.out.println(puntuacion.get(ganador));
+        System.out.println(" ");
         System.out.println("========================PERDEDOR======================="); //MENCIONA AL PERDEDOR QUE NO COMPLETO EL TABLERO ANTES
         System.out.print("Nombre: ");
         System.out.println(nombres.get(perdedor));
         System.out.print("Puntuacion: ");
         System.out.println(puntuacion.get(perdedor));
+        System.out.println(" ");
         System.out.println("==================GRACIAS POR JUGAR===================");
         rondas = 1;
     }
-    }//While cierre de juego
-        
-    }
-//COMPRUEBA QUE EL TABLERO ESTE LLENO DE X o O
-/* 
-public static void ComprobarTableros(char [][] tablero_jugador1, char [][] tablero_jugador2, int tbarcos1, int tbarcos2, int rondas, int acaba, int rondas1, int rondas2){
-    for (int a=0; a<tablero_jugador1.length; a++){
-        for (int j=0; j<tablero_jugador1.length; j++){
-            if (tablero_jugador1[a][j]=='O' | tablero_jugador1[a][j]=='X'){
-                rondas=1;
-                acaba=1;
-            }
-        }
-    }
-    for (int a=0; a<tablero_jugador2.length; a++){
-        for (int j=0; j<tablero_jugador2.length; j++){
-            if (tablero_jugador2[a][j]=='O' | tablero_jugador2[a][j]=='X'){
-                rondas=1;
-                acaba=1;
-            }
-        }
-    }
-}*/
+}//While cierre de juego
+}
 }
